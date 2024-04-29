@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Regular"), url("./fonts/Roboto-Regular.woff2") format("woff2"),
+    url("./fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Bold"), url("./fonts/Roboto-Bold.woff2") format("woff2"),
+    url("./fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-image: linear-gradient(to bottom, #4568DC, #B06AB3);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 7px;
+  width: 320px;
+  height: 580px;
+  padding: 20px 10px;
+}
+
+body {
+  background: #FFF;
+  color: #222;
+}
+
+.container {
+  display: block;
+  background-color: #FFF;
+  width: 280px;
+  height: 335px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.fielditem {
+  width: 40px;
+  height: 40px;
+  outline: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticketNumber {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+
+.fieldTitle {
+  margin-bottom: 8px;
+}
+
+.fieldNumber {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.fieldTask {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 178px;
+  height: 43px;
+  padding: 13px 26px;
+  border: 1px solid lightgray;
+  border-radius: 35px;
+  background-color: #FFF;
+  color: #000000;
+}
+
+.wand {
+  cursor: pointer;
+}
