@@ -4,7 +4,7 @@ import styles from './paramEdit.css';
 import { Item } from './Item';      // класс Item - это клетка в поле
 import { MagicWand } from './MagicWand';
 import { FillTicket } from './FillTicket';
-import { PostResult } from './api/PostResult';
+//import { PostResult } from './api/PostResult';
 
 function AppComponent() {
   const fieldOneItems: Item[] = [];
@@ -13,6 +13,7 @@ function AppComponent() {
   const [showWand, setShowWand] = useState(true);
   const [fieldOneSelected, setFieldOneSelected] = useState<number[]>([]);
   const [fieldTwoSelected, setFieldTwoSelected] = useState<number[]>([]);
+  const [textResult, setTextResult] = useState('');
   const [wins] = useState(FillTicket()); // определили выйгрышные номера
   const button = useRef<HTMLButtonElement>(null);
   const winPage = useRef<HTMLDivElement>(null);
@@ -53,13 +54,23 @@ function AppComponent() {
         fieldTwoSelected[0] === wins.fieldTwoWinNumbers[0])
     ) {
       isTicketWon = true;
-      if (winPage.current) winPage.current.innerHTML = 'Ого, вы выйграли! Поздравляем!';
+      setTextResult('You win! Congratulations!');
     }
-    else {
-      if (winPage.current) winPage.current.innerHTML = 'В следующий раз обязательно повезет!';
+    else setTextResult('Hope next time you win!')
+
+    for (let i = 0; i < 8; i++) {
+      if (wins.fieldOneWinNumbers.includes(fieldOneSelected[i])) {
+        if (fieldOne.current) fieldOne.current.children[fieldOneSelected[i] - 1].
+          setAttribute('style', 'background-color:lightgreen');
+      }
     }
 
-    PostResult('http://localhost:8000/results', fieldOneSelected, fieldTwoSelected, isTicketWon);
+    if (wins.fieldTwoWinNumbers[0] === fieldTwoSelected[0]) {
+      if (fieldTwo.current) fieldTwo.current.children[fieldTwoSelected[0] - 1].
+        setAttribute('style', 'background-color:lightgreen');
+    }
+
+    // PostResult('http://localhost:8000/results', fieldOneSelected, fieldTwoSelected, isTicketWon);
   }
 
   // первоначальное заполнение полей
@@ -92,14 +103,14 @@ function AppComponent() {
   return (
     <div className={styles.modal}>
       <div className={styles.container}>
-        <div className={styles.ticketNumber}> <span>Билет 1</span>
+        <div className={styles.ticketNumber}> <span>Ticket 1</span>
           <div className={styles.wand} onClick={autoFillTicket}>{showWand && wand}</div>
         </div>
 
         <div ref={winPage}>
           <div className={styles.fieldTitle}>
-            <span className={styles.fieldNumber}>Поле 1 </span>
-            <span className={styles.fieldTask}>Отметьте 8 чисел</span>
+            <span className={styles.fieldNumber}>Field 1 </span>
+            <span className={styles.fieldTask}>Pick 8 numbers</span>
           </div>
 
           <div className={styles.field} ref={fieldOne}>
@@ -107,17 +118,27 @@ function AppComponent() {
           </div>
 
           <div className={styles.fieldTitle}>
-            <span className={styles.fieldNumber}>Поле 2 </span>
-            <span className={styles.fieldTask}>Отметьте 1 число</span>
+            <span className={styles.fieldNumber}>Field 2 </span>
+            <span className={styles.fieldTask}>Pick 1 number</span>
           </div>
 
           <div className={styles.field} style={{ marginBottom: '23px' }} ref={fieldTwo}>
             {fieldTwoItems.map((item, index) => item.getItem())}
           </div>
 
-          <button className={styles.button} ref={button} onClick={checkTicket}>Показать результат</button>
+          <button className={styles.button} ref={button} onClick={checkTicket}>Check my ticket</button>
         </div>
       </div>
+
+      {textResult && <div className={styles.win}>
+        <div className={styles.textResult}>{textResult}</div>
+        <div>Winning numbers:</div>
+        <div>{wins.fieldOneWinNumbers.sort((a, b) => a - b).map((item, index) =>
+          <span key={index} className={styles.winNumbers}>{item}</span>)}</div>
+        <div>{wins.fieldTwoWinNumbers.map((item, index) =>
+          <span key={index} className={styles.winNumbers}>{item}</span>)}</div>
+      </div>}
+
     </div >
   )
 }

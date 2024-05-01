@@ -19,7 +19,7 @@
 .modal {
   position: fixed;
   left: 50%;
-  top: 20px;
+  top: 10px;
   transform: translateX(-50%);
   z-index: 1000;
   background-image: linear-gradient(to bottom, #4568DC, #B06AB3);
@@ -103,4 +103,13 @@ body {
 
 .wand {
   cursor: pointer;
+}
+
+.win {
+  padding: 10px;
+  color: white;
+}
+
+.winNumbers {
+  margin-right: 10px;
 }
