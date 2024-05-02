@@ -17,7 +17,7 @@
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 10px;
   transform: translateX(-50%);
@@ -25,9 +25,12 @@
   background-image: linear-gradient(to bottom, #4568DC, #B06AB3);
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
   border-radius: 7px;
-  width: 320px;
-  height: 580px;
-  padding: 20px 10px;
+  width: 300px;
+  height: 450px;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
 }
 
 body {
@@ -41,7 +44,7 @@ body {
   width: 280px;
   height: 335px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 10px;
 }
 
 .field {
