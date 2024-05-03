@@ -16,7 +16,7 @@ function AppComponent() {
   const [textResult, setTextResult] = useState('');
   const [wins] = useState(FillTicket()); // определили выйгрышные номера
   const button = useRef<HTMLButtonElement>(null);
-  const winPage = useRef<HTMLDivElement>(null);
+  const ticketDiv = useRef<HTMLDivElement>(null);
   const fieldOne = useRef<HTMLDivElement>(null);
   const fieldTwo = useRef<HTMLDivElement>(null);
 
@@ -70,6 +70,11 @@ function AppComponent() {
         setAttribute('style', 'background-color:lightgreen');
     }
 
+    if (ticketDiv.current) {
+      ticketDiv.current.style.pointerEvents = 'none';
+      ticketDiv.current.style.opacity = '0.7';
+    }
+
     // PostResult('http://localhost:8000/results', fieldOneSelected, fieldTwoSelected, isTicketWon);
   }
 
@@ -102,12 +107,12 @@ function AppComponent() {
 
   return (
     <div className={styles.modal}>
-      <div className={styles.container}>
+      <div className={styles.container} ref={ticketDiv}>
         <div className={styles.ticketNumber}> <span>Ticket 1</span>
           <div className={styles.wand} onClick={autoFillTicket}>{showWand && wand}</div>
         </div>
 
-        <div ref={winPage}>
+        <div>
           <div className={styles.fieldTitle}>
             <span className={styles.fieldNumber}>Field 1 </span>
             <span className={styles.fieldTask}>Pick 8 numbers</span>
