@@ -45,13 +45,13 @@ function App() {
   }
 
   function checkTicket() {
-  //  let isTicketWon = false;
+    //  let isTicketWon = false;
     setShowWand(false);
     if (((fieldOneSelected.filter(x => wins.fieldOneWinNumbers.includes(x))).length >= 4) ||
       (((fieldOneSelected.filter(x => wins.fieldOneWinNumbers.includes(x))).length >= 3) &&
         fieldTwoSelected[0] === wins.fieldTwoWinNumbers[0])
     ) {
-   //   isTicketWon = true;
+      //   isTicketWon = true;
       setTextResult('You win! Congratulations!');
     }
     else setTextResult('Hope next time you win!')
@@ -70,8 +70,14 @@ function App() {
 
     if (ticketDiv.current) {
       ticketDiv.current.style.pointerEvents = 'none';
-      ticketDiv.current.style.opacity = '0.7';
+      if (fieldOne.current) fieldOne.current.style.opacity = '0.5';
+      if (fieldTwo.current) fieldTwo.current.style.opacity = '0.5';
+      if (button.current) {
+        button.current.style.pointerEvents = 'all';
+      }
     }
+
+    if (button.current) button.current.textContent = "One more ticket";
 
     // PostResult('http://localhost:8000/results', fieldOneSelected, fieldTwoSelected, isTicketWon);
   }
@@ -91,13 +97,15 @@ function App() {
       if (button.current) {
         button.current.disabled = false;
         button.current.style.backgroundColor = 'lightgreen';
+        button.current.style.opacity = '1';
         button.current.style.cursor = 'pointer';
       }
     }
     else {
       if (button.current) {
         button.current.disabled = true;
-        button.current.style.backgroundColor = 'white';
+        //   button.current.style.backgroundColor = 'white';
+        button.current.style.opacity = '0.5';
         button.current.style.cursor = 'default';
       }
     }

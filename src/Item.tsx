@@ -25,14 +25,14 @@ export class Item extends React.Component {
                 this.setSelected([...this.selected, Number(el.innerText)]);
             }
             else {
-                alert(`Поле ${this.nField} заполнено`)
+                alert(`Field ${this.nField} completed`)
             }
         }
     }
 
     getItem() {
         return <div key={this.num} onClick={this.handleClick.bind(this)} data-nfield={this.nField}
-            className="fielditem" style={{ backgroundColor: 'white', cursor: 'pointer' }
+            className="fielditem" style={{ backgroundColor: 'lightyellow', cursor: 'pointer' }
             }>{this.num}</div>
     }
 }    

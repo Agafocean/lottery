@@ -40,7 +40,7 @@ body {
 
 .container {
   display: block;
-  background-color: #FFF;
+  background-color: #FFFFFF95;
   width: 280px;
   height: 335px;
   margin: 0 auto;
@@ -58,7 +58,7 @@ body {
 .fielditem {
   width: 40px;
   height: 40px;
-  outline: 1px solid lightgrey;
+  outline: 2px solid lightgray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@ body {
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 20px;  
 }
 
 .fieldTask {
@@ -100,7 +100,7 @@ body {
   padding: 13px 26px;
   border: 1px solid lightgray;
   border-radius: 35px;
-  background-color: #FFF;
+  background-color: lightgreen;
   color: #000000;
 }
 
