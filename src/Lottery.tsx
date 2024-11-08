@@ -8,9 +8,11 @@ import React from 'react';
 interface Param {
     ticketN: number;
     setTicketN: React.Dispatch<React.SetStateAction<number>>;
+    winsN: number;
+    setWinsN: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Lottery({ ticketN, setTicketN }: Param) {
+function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
     const fieldOneItems: Item[] = [];
     const fieldTwoItems: Item[] = [];
     const wand = MagicWand();
@@ -18,11 +20,11 @@ function Lottery({ ticketN, setTicketN }: Param) {
     const [fieldOneSelected, setFieldOneSelected] = useState<number[]>([]);
     const [fieldTwoSelected, setFieldTwoSelected] = useState<number[]>([]);
     const [textResult, setTextResult] = useState('');
-    const [wins] = useState(FillTicket()); // определили выйгрышные номера
+    const wins = FillTicket();  // определили выйгрышные номера
     const button = useRef<HTMLButtonElement>(null);
     const ticketDiv = useRef<HTMLDivElement>(null);
     const fieldOne = useRef<HTMLDivElement>(null);
-    const fieldTwo = useRef<HTMLDivElement>(null);
+    const fieldTwo = useRef<HTMLDivElement>(null);   
 
     function autoFillTicket() {
         const selectedNumbers = FillTicket();
@@ -51,7 +53,7 @@ function Lottery({ ticketN, setTicketN }: Param) {
     }
 
     function checkTicket() {
-        if (button.current?.textContent === "One more ticket") {setTicketN(n => n + 1)}
+        if (button.current?.textContent === "One more ticket") { setTicketN(n => n + 1) }
         else {
             setShowWand(false);
             if (((fieldOneSelected.filter(x => wins.fieldOneWinNumbers.includes(x))).length >= 4) ||
@@ -59,6 +61,7 @@ function Lottery({ ticketN, setTicketN }: Param) {
                     fieldTwoSelected[0] === wins.fieldTwoWinNumbers[0])
             ) {
                 setTextResult('You win! Congratulations!');
+                setWinsN(n => n + 1);
             }
             else setTextResult('Hope next time you win!')
 
@@ -84,11 +87,9 @@ function Lottery({ ticketN, setTicketN }: Param) {
             }
 
             if (button.current) button.current.textContent = "One more ticket";
-
-            // PostResult('http://localhost:8000/results', fieldOneSelected, fieldTwoSelected, isTicketWon);
         }
     }
-    
+
     // первоначальное заполнение полей  
     for (let i = 0; i < 19; i++) {
         fieldOneItems.push(new Item('1', i + 1, fieldOneSelected, setFieldOneSelected))
@@ -154,6 +155,7 @@ function Lottery({ ticketN, setTicketN }: Param) {
                     <span key={index} className="winNumbers">{item}</span>)}</div>
                 <div>{wins.fieldTwoWinNumbers.map((item, index) =>
                     <span key={index} className="winNumbers">{item}</span>)}</div>
+                <div>Wins: {winsN}</div>
             </div>}
 
         </div >

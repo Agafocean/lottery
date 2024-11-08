@@ -26,11 +26,8 @@
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
   border-radius: 7px;
   width: 300px;
-  height: 450px;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
+  height: 460px;
+  padding: 20px 10px;  
 }
 
 body {
@@ -97,6 +94,7 @@ body {
   margin: 0 auto;
   width: 178px;
   height: 43px;
+  font-size: 16px;
   padding: 13px 26px;
   border: 1px solid lightgray;
   border-radius: 35px;
