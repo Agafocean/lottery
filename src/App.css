@@ -82,6 +82,11 @@ body {
   line-height: 20px;
 }
 
+.rules {
+  padding-top: 5px;
+  font-size: 12px;  
+}
+
 .fieldTask {
   font-family: 'Roboto';
   font-weight: 400;
@@ -108,7 +113,7 @@ body {
 }
 
 .win {
-  padding: 10px;
+  padding: 5px;
   color: white;
 }
 
