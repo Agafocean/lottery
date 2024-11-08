@@ -6,7 +6,7 @@ function App() {
   const [winsN, setWinsN] = useState(0);
 
   return (<div key={ticketN}>
-    <Lottery ticketN={ticketN} setTicketN={setTicketN} winsN={winsN}  setWinsN={setWinsN} />
+    <Lottery ticketN={ticketN} setTicketN={setTicketN} winsN={winsN} setWinsN={setWinsN} />
   </div>
   )
 }

@@ -24,7 +24,7 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
     const button = useRef<HTMLButtonElement>(null);
     const ticketDiv = useRef<HTMLDivElement>(null);
     const fieldOne = useRef<HTMLDivElement>(null);
-    const fieldTwo = useRef<HTMLDivElement>(null);   
+    const fieldTwo = useRef<HTMLDivElement>(null);
 
     function autoFillTicket() {
         const selectedNumbers = FillTicket();
