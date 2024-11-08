@@ -20,7 +20,7 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
     const [fieldOneSelected, setFieldOneSelected] = useState<number[]>([]);
     const [fieldTwoSelected, setFieldTwoSelected] = useState<number[]>([]);
     const [textResult, setTextResult] = useState('');
-    const wins = FillTicket();  // определили выйгрышные номера
+    const [wins] = useState(FillTicket()); // определили выйгрышные номера   
     const button = useRef<HTMLButtonElement>(null);
     const ticketDiv = useRef<HTMLDivElement>(null);
     const fieldOne = useRef<HTMLDivElement>(null);
@@ -63,19 +63,19 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
                 setTextResult('You win! Congratulations!');
                 setWinsN(n => n + 1);
             }
-            else setTextResult('Hope next time you win!')
+            else setTextResult('Hope next time you win!');
 
             for (let i = 0; i < 8; i++) {
                 if (wins.fieldOneWinNumbers.includes(fieldOneSelected[i])) {
                     if (fieldOne.current) fieldOne.current.children[fieldOneSelected[i] - 1].
                         setAttribute('style', 'background-color:lightgreen');
                 }
-            }
+            };
 
             if (wins.fieldTwoWinNumbers[0] === fieldTwoSelected[0]) {
                 if (fieldTwo.current) fieldTwo.current.children[fieldTwoSelected[0] - 1].
                     setAttribute('style', 'background-color:lightgreen');
-            }
+            };
 
             if (ticketDiv.current) {
                 ticketDiv.current.style.pointerEvents = 'none';
@@ -84,7 +84,7 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
                 if (button.current) {
                     button.current.style.pointerEvents = 'all';
                 }
-            }
+            };
 
             if (button.current) button.current.textContent = "One more ticket";
         }
