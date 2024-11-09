@@ -125,32 +125,33 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
                     <div className="wand" onClick={autoFillTicket}>{showWand && wand}</div>
                 </div>
 
-                <div>
-                    <div className="fieldTitle">
-                        <span className="fieldNumber">Field 1 </span>
-                        <span className="fieldTask">Pick 8 numbers</span>
-                    </div>
 
-                    <div className="field" ref={fieldOne}>
-                        {fieldOneItems.map((item) => item.getItem())}
-                    </div>
-
-                    <div className="fieldTitle">
-                        <span className="fieldNumber">Field 2 </span>
-                        <span className="fieldTask">Pick 1 number</span>
-                    </div>
-
-                    <div className="field" style={{ marginBottom: '23px' }} ref={fieldTwo}>
-                        {fieldTwoItems.map((item) => item.getItem())}
-                    </div>
-
-                    <button className="button" ref={button} onClick={checkTicket}>Check my ticket</button>
+                <div className="fieldTitle">
+                    <span className="fieldNumber">Field 1 </span>
+                    <span className="fieldTask">Pick 8 numbers</span>
                 </div>
+
+                <div className="field" ref={fieldOne}>
+                    {fieldOneItems.map((item) => item.getItem())}
+                </div>
+
+                <div className="fieldTitle">
+                    <span className="fieldNumber">Field 2 </span>
+                    <span className="fieldTask">Pick 1 number</span>
+                </div>
+
+                <div className="field" style={{ marginBottom: '23px' }} ref={fieldTwo}>
+                    {fieldTwoItems.map((item) => item.getItem())}
+                </div>
+
+                <button className="button" ref={button} onClick={checkTicket}>Check my ticket</button>
+             
             </div>
 
             <div className="rules">
-                Guess 4+ in the field 1 or 3+ in the field 1 and 1 in the field 2
-            </div>
+                    <p>Guess 4+ in the field 1 or 3+ in the field 1 and 1 in the field 2</p>
+                    <p>* The magic wand in the ticket can pick numbers for you</p>
+                </div>
 
             {textResult && <div className="win">
                 <div className="textResult">{textResult}</div>
