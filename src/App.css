@@ -35,7 +35,7 @@ p {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
   border-radius: 7px;
   width: 300px;
-  height: 460px;
+  height: 470px;
   padding: 20px 10px;  
 }
 
@@ -48,7 +48,7 @@ body {
   display: block;
   background-color: #FFFFFF95;
   width: 280px;
-  height: 345px;
+  height: 350px;
   margin: 0 auto;
   padding: 10px;  
 }
