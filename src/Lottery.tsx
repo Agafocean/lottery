@@ -122,9 +122,8 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
         <div className="modal">
             <div className="container" ref={ticketDiv}>
                 <div className="ticketNumber"> <span>Ticket {ticketN}</span>
-                    <div className="wand" onClick={autoFillTicket}>{showWand && wand}</div>
+                    <div className={`wand ${!showWand && "invisible"}`} onClick={autoFillTicket}>{wand}</div>
                 </div>
-
 
                 <div className="fieldTitle">
                     <span className="fieldNumber">Field 1 </span>
@@ -140,18 +139,17 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
                     <span className="fieldTask">Pick 1 number</span>
                 </div>
 
-                <div className="field" style={{ marginBottom: '23px' }} ref={fieldTwo}>
+                <div className="field" style={{ marginBottom: '20px' }} ref={fieldTwo}>
                     {fieldTwoItems.map((item) => item.getItem())}
                 </div>
 
                 <button className="button" ref={button} onClick={checkTicket}>Check my ticket</button>
-             
-            </div>
-
-            <div className="rules">
-                    <p>Guess 4+ numbers in the field 1 or 3+ in the field 1 and 1 in the field 2</p>
+                <div className="rules">
+                    <p>Guess 4+ in the field 1 or 3+ in the field 1 and 1 in the field 2</p>
                     <p>* The magic wand in the ticket can pick numbers for you *</p>
                 </div>
+
+            </div>
 
             {textResult && <div className="win">
                 <div className="textResult">{textResult}</div>
