@@ -150,7 +150,7 @@ function Lottery({ ticketN, setTicketN, winsN, setWinsN }: Param) {
 
             <div className="rules">
                     <p>Guess 4+ numbers in the field 1 or 3+ in the field 1 and 1 in the field 2</p>
-                    <p>* The magic wand in the ticket can pick numbers for you</p>
+                    <p>* The magic wand in the ticket can pick numbers for you *</p>
                 </div>
 
             {textResult && <div className="win">
